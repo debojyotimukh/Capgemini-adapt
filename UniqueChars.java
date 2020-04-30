@@ -4,6 +4,7 @@ public class UniqueChars {
         return (int)str.toLowerCase().chars()
             .distinct()
             .count();
+            
     }
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);

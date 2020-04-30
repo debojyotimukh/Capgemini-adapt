@@ -14,6 +14,7 @@ import java.util.Calendar;
 
 public class AgeCalculator {
     public static int[] calculateAge(String dob) throws ParseException {
+    
         String pattern="dd/MM/yyyy";
         String refDate="01/04/2019";
         SimpleDateFormat sdf=new SimpleDateFormat(pattern);
@@ -27,7 +28,7 @@ public class AgeCalculator {
             Calendar dateOfBirth=Calendar.getInstance();
             dateOfBirth.setTimeInMillis(dt.getTime());
             result[0]=refDCalendar.get(Calendar.YEAR)-dateOfBirth.get(Calendar.YEAR);
-            result[1]=refDCalendar.get(Calendar.MONTH)-dateOfBirth.get(Calendar.MONTH)-1;
+            result[1]=refDCalendar.get(Calendar.MONTH)-dateOfBirth.get(Calendar.MONTH);
             if(result[1]<0){
                 result[1]=result[1]+12;
                 result[0]-=1;
@@ -37,6 +38,29 @@ public class AgeCalculator {
         return null;
 
     }
+
+    public static String getDayOfDate(String date) throws ParseException {
+        String pattern="dd/MM/yyyy";
+        SimpleDateFormat sdf=new SimpleDateFormat(pattern);
+        Date dt=sdf.parse(date);
+        Calendar dCalendar=Calendar.getInstance();
+        dCalendar.setTimeInMillis(dt.getTime());
+        switch(dCalendar.get(Calendar.DAY_OF_WEEK)){
+            case Calendar.SUNDAY:
+                return "Sunday";
+            case Calendar.MONDAY:
+                return "Monday";
+            case Calendar.TUESDAY:
+                return "Tuesday";
+            case Calendar.WEDNESDAY:
+                return "Wednesday";
+            case Calendar.THURSDAY:
+                return "Thursday";
+            case Calendar.FRIDAY:
+                return "Friday";
+        }
+        return "Saturday";
+	}
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         int[] result={0,0};

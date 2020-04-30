@@ -54,6 +54,7 @@ public class Source {
 	    sc.close();
 	    //System.out.println(s);
 	    res=getSumOfListElements(f,s);
-	    System.out.println(res);
+        System.out.println(res);
+        sc.close();
 	}
 }

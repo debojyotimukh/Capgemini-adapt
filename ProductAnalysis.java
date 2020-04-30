@@ -74,7 +74,7 @@ class ProductService
 {
     static Product[] products=ProductData.getProducts();
 
-    public static String findByCode(int code){
+    public static String findNameByCode(int code){
         for(int i=0;i<products.length;i++){
             if(products[i].getProdCode()==code)  return products[i].getProdName();
             
@@ -86,7 +86,7 @@ class ProductService
         int index=-1;
         double indexPrice=0;
         for(int i=0;i<products.length;i++){
-            if(products[i].getCategory()==category){
+            if(products[i].getCategory().equalsIgnoreCase(category)){
                 if(products[i].getPrice()>indexPrice){
                     indexPrice=products[i].getPrice();
                     index=i;
@@ -106,13 +106,12 @@ public class ProductAnalysis{
         switch(op){
             case 1:
                 int code=sc.nextInt();
-                String name=ProductService.findByCode(code);
+                String name=ProductService.findNameByCode(code);
                 if(name!=null)System.out.println(name);
                 else System.out.println("Product Not Found");
                 break;
             case 2:
-                String category=(sc.next()).toLowerCase();
-                System.out.println(category);
+                String category=sc.next();
                 Product p=ProductService.findMaxPriceProduct(category);
                 if(p==null){
                    System.out.println("No products in given category");
