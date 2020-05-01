@@ -21,14 +21,9 @@ class AgeCalculator {
         String pattern = "dd/MM/yyyy";
         String refDate = "01/04/2019";
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-        Date dt = null;
-        Date dt2 = null;
         try {
-            dt = sdf.parse(dob);
-            dt2 = sdf.parse(refDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } finally {
+            Date dt = sdf.parse(dob);
+            Date dt2 = sdf.parse(refDate);
             int[] result = { 0, 0 };
 
             if (dt.before(dt2)) {
@@ -44,6 +39,8 @@ class AgeCalculator {
                 }
                 return result;
             }
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
         return null;
 
