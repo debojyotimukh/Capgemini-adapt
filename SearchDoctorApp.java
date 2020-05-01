@@ -48,7 +48,7 @@ class Doctor implements Comparable {
 	}
 
 	@Override
-	public int compareTo(Object o) {// Ascending order of name
+	public int compareTo(Object o) {//Natural Ordering: Ascending order of name
 		if (o instanceof Doctor) {
 			Doctor d2 = (Doctor) o;
 			return name.compareTo((d2.getName()));
@@ -70,12 +70,12 @@ class DoctorService {
 
 	/**
 	 * This method takes years of experience as input parameter and returns a List
-	 * of Doctors, who have experience equal to or more than the input parameter The
-	 * returned List should be sorted in ascending order of speciality and
+	 * of Doctors, who have experience equal to or more than the input parameter .
+	 * The returned List should be sorted in ascending order of speciality and
 	 * descending order of experience for a speciality.
 	 * 
-	 * @param exp
-	 * @return
+	 * @param exp	Years of experience
+	 * @return	List of Doctors, who have experience equal to or more than the input parameter
 	 */
 	public List<Doctor> getExperiencedDoctors(int exp) {
 		List<Doctor> doctorsWithExpList = new ArrayList<Doctor>();
@@ -97,8 +97,8 @@ class DoctorService {
 	 * in ascending order of name of Doctor(This is done by compareTo() method in
 	 * the Doctors class)
 	 * 
-	 * @param specialty
-	 * @return
+	 * @param specialty	speciality(case insensitive) of the Doctors
+	 * @return	Set of Doctors who have this speciality
 	 */
 	public Set<Doctor> getSpecialityDoctor(String specialty) {
 		Set<Doctor> result = new TreeSet<Doctor>();
@@ -133,10 +133,10 @@ public class SearchDoctorApp {
 
 	/**
 	 * Create Doctor objects using the data present in doctorsData variable and add
-	 * these objects to a ArrayList of Doctors Initialize the doctorsRepository
+	 * these objects to a ArrayList of Doctors and initialize the doctorsRepository
 	 * variable of DoctorService with the above ArrayList
 	 * 
-	 * @return
+	 * @return	DoctorService object to be used for calling the methods
 	 */
 	private static DoctorService buildDoctorsRepository() {
 
