@@ -4,12 +4,46 @@ import java.util.List;
 
 public class SumOfListClass {
     /**
-     * Find the sum of two unequally sized lists
-     * @param first First List
-     * @param second    Second List
-     * @return  Sum of the first and second
+     * Find the sum of two unequally sized lists (modifies original lists)
+     * 
+     * @param first  First List
+     * @param second Second List
+     * @return Sum of the first and second
      */
-    public static List<Integer> getSumOfListElements(List<Integer> first, List<Integer> second) {
+    public static List<Integer> getSumOfListElements(List<Integer> firstList, List<Integer> secondList) {
+        try {
+            if (firstList.size() >= secondList.size()) {
+                for (int i = 0; i < secondList.size(); i++) {
+                    firstList.set(i, firstList.get(i) + secondList.get(i));
+                }
+                return firstList;
+            } else if (firstList.size() < secondList.size()) {
+                for (int i = 0; i < firstList.size(); i++) {
+                    secondList.set(i, firstList.get(i) + secondList.get(i));
+                }
+                return secondList;
+            }
+        } catch (NullPointerException e) {
+            if (firstList == null && secondList == null) {
+                return new ArrayList<Integer>();// return empty list
+            } else if (firstList == null) {
+                return secondList;
+            } else if (secondList == null) {
+                return firstList;
+            } else
+                e.printStackTrace();
+        }
+        return firstList;
+    }
+    
+    /**
+     * Find the sum of two unequally sized lists 
+     * 
+     * @param first  First List
+     * @param second Second List
+     * @return Sum of the first and second
+     */
+    public static List<Integer> getSumOfListElements1(List<Integer> first, List<Integer> second) {
         List<Integer> res = new ArrayList<Integer>();
 
         try {
@@ -46,12 +80,12 @@ public class SumOfListClass {
     }
 
     public static void main(String[] args) {
-        //Take two comma separated lists as input
+        // Take two comma separated lists as input
         //      "10, 20, 30, 40, 50"
         //      "12, 23, 34"
         Scanner sc = new Scanner(System.in).useDelimiter("\n");
-        List<Integer> f = new ArrayList<Integer>();
-        List<Integer> s = new ArrayList<Integer>();
+        List<Integer> first = new ArrayList<Integer>();
+        List<Integer> second = new ArrayList<Integer>();
 
         String line0 = sc.next();
         line0 = line0.replace("\"", "").replaceAll("\t", "").replaceAll(" ", "");
@@ -65,16 +99,17 @@ public class SumOfListClass {
         String[] slistData = line1.split("\\D");
         try {
             for (String data : flistData) {
-                f.add(Integer.parseInt(data));
+                first.add(Integer.parseInt(data));
             }
 
             for (String data : slistData) {
-                s.add(Integer.parseInt(data));
+                second.add(Integer.parseInt(data));
             }
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
 
-        System.out.println(getSumOfListElements(f, s));
+        System.out.println(getSumOfListElements1(first, second));
+        
     }
 }
