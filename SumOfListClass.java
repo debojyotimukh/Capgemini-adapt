@@ -35,7 +35,7 @@ public class SumOfListClass {
         }
         return firstList;
     }
-    
+
     /**
      * Find the sum of two unequally sized lists 
      * 
@@ -44,31 +44,27 @@ public class SumOfListClass {
      * @return Sum of the first and second
      */
     public static List<Integer> getSumOfListElements1(List<Integer> first, List<Integer> second) {
-        List<Integer> res = new ArrayList<Integer>();
+        List<Integer> resultList = new ArrayList<Integer>();
 
         try {
-            if (first.size() == second.size()) {
-                for (int i = 0; i < first.size(); i++) {
-                    res.add(first.get(i) + second.get(i));
-                }
-            } else if (first.size() > second.size()) {
+            if (first.size() >= second.size()) {
                 for (int i = 0; i < second.size(); i++) {
-                    res.add(first.get(i) + second.get(i));
+                    resultList.add(first.get(i) + second.get(i));
                 }
                 for (int j = second.size(); j < first.size(); j++) {
-                    res.add(first.get(j));
+                    resultList.add(first.get(j));
                 }
             } else if (first.size() < second.size()) {
                 for (int i = 0; i < first.size(); i++) {
-                    res.add(first.get(i) + second.get(i));
+                    resultList.add(first.get(i) + second.get(i));
                 }
                 for (int j = first.size(); j < second.size(); j++) {
-                    res.add(second.get(j));
+                    resultList.add(second.get(j));
                 }
             }
         } catch (NullPointerException e) {
             if (first == null && second == null) {
-                return res;
+                return resultList;
             } else if (first == null) {
                 return second;
             } else if (second == null) {
@@ -76,7 +72,7 @@ public class SumOfListClass {
             } else
                 e.printStackTrace();
         }
-        return res;
+        return resultList;
     }
 
     public static void main(String[] args) {
@@ -93,8 +89,8 @@ public class SumOfListClass {
         String line1 = sc.next();
         line1 = line1.replace("\"", "").replaceAll("\t", "").replaceAll(" ", "");
 
-        sc.reset();
         sc.close();
+        
         String[] flistData = line0.split("\\D");
         String[] slistData = line1.split("\\D");
         try {
@@ -109,7 +105,6 @@ public class SumOfListClass {
             e.printStackTrace();
         }
 
-        System.out.println(getSumOfListElements1(first, second));
-        
+        System.out.println(getSumOfListElements1(first, second));        
     }
 }
