@@ -19,10 +19,7 @@ class LuckyRegNo{
         if (mr.matches()) {
             while (mr2.find()) {
                 final String lastPart = mr2.group();
-                final int sum = sumOfDigits(Integer.parseInt(lastPart));
-                final int b = (int) (sum % 10);
-                final int a = (int) (sum / 10);
-                if (a + b == 6)
+                if (sumOfDigits(sumOfDigits(Integer.parseInt(lastPart))) == 6)
                     return 1;
                 else
                     return 0;
