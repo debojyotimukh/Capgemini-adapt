@@ -101,13 +101,13 @@ class DoctorService {
 	 * @return	Set of Doctors who have this speciality
 	 */
 	public Set<Doctor> getSpecialityDoctor(String specialty) {
-		Set<Doctor> result = new TreeSet<Doctor>();
+		Set<Doctor> doctorsWithSpecialitySet = new TreeSet<Doctor>();
 		for (Doctor doctor : doctorsRepository) {
 			if (doctor.getSpeciality().equalsIgnoreCase(specialty)) {
-				result.add(doctor);
+				doctorsWithSpecialitySet.add(doctor);
 			}
 		}
-		return result;
+		return doctorsWithSpecialitySet;
 	}
 }
 
