@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table{
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <h1 style="text-align: center;">Login Page</h1>
+        <br>
+        <table>
+            <tbody>
+                <tr>
+                    <td><label for="user">User Name:</label></td>
+                    <td><input type="text" id="user" style="margin-left: 20pt;"/></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password:</label></td>
+                    <td><input type="password" id="password" style="margin-left: 20pt;" /></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="Login" onclick="UserLogin()" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+        <div id="info"></div>
+        <script>
+            function UserLogin() {
+                var name=document.getElementById("user").value;
+                if (name=="admin") {
+                    document.getElementById("info").innerHTML="Valid User";
+                }
+                else
+                    document.getElementById("info").innerHTML="Invalid User";
+            }
+        </script>        
+    </body>
+</html>
