@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.lang.Comparable;
 
-class Doctor implements Comparable {
+class Doctor implements Comparable<Doctor> {
 
 	private String name;
 	private String speciality;
@@ -48,14 +48,9 @@ class Doctor implements Comparable {
 	}
 
 	@Override
-	public int compareTo(Object o) {//Natural Ordering: Ascending order of name
-		if (o instanceof Doctor) {
-			Doctor d2 = (Doctor) o;
-			return name.compareTo((d2.getName()));
-		}
-		return 0;
+	public int compareTo(Doctor d2) {//Natural Ordering: Ascending order of name
+		return name.compareTo(d2.getName());
 	}
-
 }
 
 class DoctorService {
