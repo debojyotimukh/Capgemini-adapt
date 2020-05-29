@@ -79,7 +79,8 @@ public class SumOfListClass {
         // Take two comma separated lists as input
         //      "10, 20, 30, 40, 50"
         //      "12, 23, 34"
-        Scanner sc = new Scanner(System.in).useDelimiter("\n");
+        Scanner sc = new Scanner(System.in);
+        sc.useDelimiter("\n");
         List<Integer> first = new ArrayList<Integer>();
         List<Integer> second = new ArrayList<Integer>();
 
