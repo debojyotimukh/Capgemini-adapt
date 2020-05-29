@@ -1,4 +1,3 @@
-import java.util.Date;
 import java.util.Scanner;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,21 +23,21 @@ public class DateValidator {
         SimpleDateFormat sdf = new SimpleDateFormat(pattern1);
         sdf.setLenient(false);
         try {
-            Date date = sdf.parse(dateString);
+            sdf.parse(dateString);
             return 1;
         } catch (ParseException e) {
 
         }
         try {
             sdf.applyPattern(pattern2);
-            Date date = sdf.parse(dateString);
+            sdf.parse(dateString);
             return 1;
         } catch (ParseException e) {
 
         }
         try {
             sdf.applyPattern(pattern3);
-            Date date = sdf.parse(dateString);
+            sdf.parse(dateString);
             return 1;
         } catch (ParseException e) {
 
